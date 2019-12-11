@@ -40,17 +40,18 @@ $(document).ready(function() {
             }
         }
         storedData = JSON.parse(localStorage.getItem('localStor'));
-        for (let i = 0; i < storedData.length; i++) {
-            if (storedData[i] !== null) {
-                let j = i.toString();
-                $('#' + j)[0].value = storedData[i];
+        if (storedData !== null) {
+            for (let i = 0; i < storedData.length; i++) {
+                if (storedData[i] !== null) {
+                    let j = i.toString();
+                    $('#' + j)[0].value = storedData[i];
+                }
             }
+            locStor = storedData;
         }
-        locStor = storedData;
     }
 
     const checkTime = () => {
-        console.log('test');
         $('#dayText').text(moment().format('dddd MMMM Do'));
         if (moment().format('a') === 'am') {
             $('#3').css('background-color', 'green');
